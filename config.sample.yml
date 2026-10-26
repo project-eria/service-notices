@@ -1,0 +1,10 @@
+host: 127.0.0.1 # thing host (default to all IPs)
+port: 8104 # thing port (default 80)
+location: <timezone e.g. Europe/Paris>
+# Channels of each person, as shoutrrr URLs (https://github.com/nicholas-fedor/shoutrrr)
+subscriptions:
+  - profile: <profile id>
+    url: ntfy://ntfy.example.lan/eria-alerts?priority=5
+    minSeverity: warning # info (default), warning or alert
+  - profile: <profile id>
+    url: discord://<token>@<webhook id>

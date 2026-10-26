@@ -1,0 +1,17 @@
+# ERIA package description (orchestrator catalog, eria-manager DESIGN §12.3)
+name: service-notices
+title: Notifications
+description: Notifications de la maison, pour l'application et les canaux de chaque personne (ntfy, Discord, Telegram…)
+kind: service
+requires: [storage]
+
+exec:
+  args: ["--config-path", "{config}"]
+  env: ["ERIA_DATA_PATH={data}/notices.db"]
+  health: { url: "http://127.0.0.1:{port}/eria", grace: 20s, interval: 10s }
+
+config: |
+  host: 0.0.0.0
+  port: 8104
+  location: Europe/Paris
+  subscriptions: []
