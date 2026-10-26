@@ -3,6 +3,7 @@ module service-notices
 go 1.27.3
 
 require (
+	github.com/go-co-op/gocron/v2 v2.22.0
 	github.com/nicholas-fedor/shoutrrr v0.22.1
 	github.com/project-eria/eria-core v1.16.0
 	github.com/project-eria/go-wot v1.8.0
@@ -16,7 +17,6 @@ require (
 	github.com/dustin/go-humanize v1.1.0 // indirect
 	github.com/eclipse/paho.golang v0.23.0 // indirect
 	github.com/fasthttp/websocket v1.5.12 // indirect
-	github.com/go-co-op/gocron/v2 v2.22.0 // indirect
 	github.com/gofiber/fiber/v2 v2.52.15 // indirect
 	github.com/gofiber/websocket/v2 v2.2.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect

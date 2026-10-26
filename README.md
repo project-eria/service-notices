@@ -11,6 +11,8 @@ l'application et les envoie aux canaux de chaque personne.
 - `resolve {key}` → `true` si une notice active a été close (elle reste dans l'historique).
 - `markRead {profile, ids}` — le profil viendra du jeton quand `auth` existera.
 - Propriétés : `notices` (100 dernières, actives et résolues), `read/{profile}` (ids lus).
+- Une notice résolue est effacée de la base 30 jours après (chaque nuit à 3 h) ; une notice
+  active ne l'est jamais.
 - Events : `raised`, `resolved`.
 
 ## Canaux

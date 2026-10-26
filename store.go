@@ -32,7 +32,7 @@ func (n Notice) asMap() map[string]interface{} {
 	return m
 }
 
-// An active notice has resolved = ''; the partial index keeps one active notice per key.
+// An active notice has an empty "resolved"; the partial index keeps one active notice per key.
 const schema = `
 CREATE TABLE IF NOT EXISTS notices (
 	id       INTEGER PRIMARY KEY,
@@ -54,8 +54,10 @@ CREATE TABLE IF NOT EXISTS reads (
 );`
 
 // listLimit is how many notices (active and history) the "notices" property gives.
-// ponytail: no purge, old rows stay in the file; add one if it grows too much.
 const listLimit = 100
+
+// keepResolved is how long a resolved notice stays in the database.
+const keepResolved = 30 * 24 * time.Hour
 
 type store struct{ db *sql.DB }
 
@@ -116,6 +118,26 @@ func (s *store) resolve(key string) (bool, error) {
 	}
 	n, err := res.RowsAffected()
 	return n > 0, err
+}
+
+// purge deletes the notices resolved before the date, with their read state;
+// active notices are never deleted.
+func (s *store) purge(before time.Time) (int64, error) {
+	tx, err := s.db.Begin()
+	if err != nil {
+		return 0, err
+	}
+	defer tx.Rollback()
+	limit := before.UTC().Format(time.RFC3339)
+	if _, err := tx.Exec(`DELETE FROM reads WHERE notice IN (SELECT id FROM notices WHERE resolved != '' AND resolved < ?)`, limit); err != nil {
+		return 0, err
+	}
+	res, err := tx.Exec(`DELETE FROM notices WHERE resolved != '' AND resolved < ?`, limit)
+	if err != nil {
+		return 0, err
+	}
+	n, _ := res.RowsAffected()
+	return n, tx.Commit()
 }
 
 // list gives the latest notices, newest first.

@@ -5,6 +5,9 @@ import (
 	"flag"
 	"os"
 	"slices"
+	"time"
+
+	"github.com/go-co-op/gocron/v2"
 
 	eria "github.com/project-eria/eria-core"
 	"github.com/project-eria/go-wot/dataSchema"
@@ -50,6 +53,20 @@ func main() {
 
 	eriaThing, _ := eria.Producer("").AddThing("", setThing())
 	setHandlers(eriaThing, st)
+
+	// Each night, forget the notices resolved more than keepResolved ago
+	eria.GetCronScheduler().NewJob(
+		gocron.DailyJob(1, gocron.NewAtTimes(gocron.NewAtTime(3, 0, 0))),
+		gocron.NewTask(func() {
+			if n, err := st.purge(time.Now().Add(-keepResolved)); err != nil {
+				zlog.Error().Err(err).Msg("[main:purge]")
+			} else if n > 0 {
+				zlog.Info().Int64("deleted", n).Msg("[main:purge] old resolved notices deleted")
+			}
+		}),
+		gocron.WithTags("purge", "main"),
+		gocron.WithStartAt(gocron.WithStartImmediately()),
+	)
 
 	eria.Start("")
 }

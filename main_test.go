@@ -3,6 +3,7 @@ package main
 import (
 	"path/filepath"
 	"testing"
+	"time"
 )
 
 func TestStore(t *testing.T) {
@@ -47,6 +48,17 @@ func TestStore(t *testing.T) {
 	list, _ := st.list()
 	if len(list) != 2 || list[0].ID != third.ID || list[1].Resolved == "" || list[1].Severity != "alert" {
 		t.Fatalf("list: %+v", list)
+	}
+
+	// Purge: only the resolved notice goes, with its read state; the active one stays
+	if n, err := st.purge(time.Now().Add(time.Minute)); err != nil || n != 1 {
+		t.Fatalf("purge: %d %v", n, err)
+	}
+	if list, _ := st.list(); len(list) != 1 || list[0].ID != third.ID {
+		t.Fatalf("after purge: %+v", list)
+	}
+	if ids, _ := st.readIDs("cedric"); len(ids) != 0 {
+		t.Fatalf("read ids after purge: %v", ids)
 	}
 }
 
