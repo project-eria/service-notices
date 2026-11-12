@@ -68,10 +68,10 @@ github.com/ncruces/go-strftime v1.1.0 h1:vtPmPWMkb539RGV9WpWT9EwJGvrOCKvMNI4obWL
 github.com/ncruces/go-strftime v1.1.0/go.mod h1:yVaq7iwCN09vHRrKBrrflXT0M9tTMG2KmZ9Fj7xeG/g=
 github.com/nicholas-fedor/shoutrrr v0.22.1 h1:9B/sTQyE5BrtUKPpOyRO+XdYIrU0QRIjDdvfUbunWiE=
 github.com/nicholas-fedor/shoutrrr v0.22.1/go.mod h1:kvUu4xf3cgZzkbHCqw0cxu7cxxj4Y//WZeJ6KC0+Q0o=
-github.com/project-eria/eria-core v1.21.0 h1:t+RuPWKgaBhOiJHs9EcC9V3W8Yoc5Mi6cn1wX7ybza8=
-github.com/project-eria/eria-core v1.21.0/go.mod h1:ldncngZwUCIlx5OY9SaxV0fG0YlACANp/m9VY/dypjY=
-github.com/project-eria/go-wot v1.14.0 h1:46yp15bSvwqUpIBlvktW2mndjxDvrqaLKOdEcvTmxuo=
-github.com/project-eria/go-wot v1.14.0/go.mod h1:1kEYDHwaCl339L5a5/LfKNa8vq4EKqzf4diQPZo6hes=
+github.com/project-eria/eria-core v1.22.0 h1:9IGxIaokiMCEgCeKULfoYg4IDlkbmJjSVFQXmKPKCOU=
+github.com/project-eria/eria-core v1.22.0/go.mod h1:q67Wb781+GN9tRqS+K0SyfkidcQv6e/lztmIjHRKM5c=
+github.com/project-eria/go-wot v1.15.0 h1:KOvNyeFl71W3/ZzOjbm3ni+vLp8lPceG+oJq7MGp0KA=
+github.com/project-eria/go-wot v1.15.0/go.mod h1:1kEYDHwaCl339L5a5/LfKNa8vq4EKqzf4diQPZo6hes=
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=
 github.com/robfig/cron/v3 v3.0.1 h1:WdRxkvbJztn8LMz/QEvLN5sBU+xKpSqwwUO1Pjr4qDs=

@@ -5,8 +5,8 @@ go 1.27.3
 require (
 	github.com/go-co-op/gocron/v2 v2.22.0
 	github.com/nicholas-fedor/shoutrrr v0.22.1
-	github.com/project-eria/eria-core v1.21.0
-	github.com/project-eria/go-wot v1.14.0
+	github.com/project-eria/eria-core v1.22.0
+	github.com/project-eria/go-wot v1.15.0
 	github.com/rs/zerolog v1.35.1
 	modernc.org/sqlite v1.61.0
 )
