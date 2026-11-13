@@ -1,4 +1,4 @@
-# ERIA package description (orchestrator catalog, eria-manager DESIGN §12.3)
+# ERIA package description (orchestrator catalog, eria-coordinator DESIGN §12.3)
 name: service-notices
 title: Notifications
 description: Notifications de la maison, pour l'application et les canaux de chaque personne (ntfy, Discord, Telegram…)
