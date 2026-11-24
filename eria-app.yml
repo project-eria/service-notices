@@ -3,7 +3,7 @@ name: service-notices
 title: Notifications
 description: Notifications de la maison, pour l'application et les canaux de chaque personne (ntfy, Discord, Telegram…)
 kind: service
-requires: [storage]
+data: snapshot
 
 exec:
   args: ["--config-path", "{config}"]
